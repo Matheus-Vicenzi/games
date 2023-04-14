@@ -9,7 +9,7 @@ let score = 0;
 //responsável por fazer o personagem pular
 const jump = () => {
   mario.classList.add("jump");
-
+  
   setTimeout(() => {
     mario.classList.remove("jump");
   }, 500);
@@ -21,6 +21,7 @@ const loop = setInterval(() => {
   const marioPosition = window.getComputedStyle(mario).bottom.replace("px", "");
 
   if (pipePosition < 120 && pipePosition > 0 && marioPosition < 80) {
+    
     pipe.style.animation = "none";
     pipe.style.left = `${pipePosition}px`;
 
@@ -30,14 +31,16 @@ const loop = setInterval(() => {
     mario.src = "/MarioJump/images/gameovermario.png";
     mario.style.width = "90px";
     mario.style.marginLeft = "50px";
-
+    pts = true;
     clearInterval(loop);
-  }if (pipePosition < -60) {
-  
+  }
+    
     score++;
+    Math.floor(score);
+    
     scoreElement.innerText = score;
     
-  }
+  
 }, 10);
 
 //reiniciar o jogo
